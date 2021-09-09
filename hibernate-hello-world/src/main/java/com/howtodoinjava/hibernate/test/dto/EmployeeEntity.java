@@ -13,8 +13,10 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "Employee", uniqueConstraints = {
-		@UniqueConstraint(columnNames = "ID"),
-		@UniqueConstraint(columnNames = "EMAIL") })
+		@UniqueConstraint(columnNames = "ID")
+		,
+		@UniqueConstraint(columnNames = "EMAIL")
+})
 public class EmployeeEntity implements Serializable {
 	
 	private static final long serialVersionUID = -1798070786993154676L;

@@ -4,6 +4,8 @@ import org.hibernate.Session;
 
 import com.howtodoinjava.hibernate.test.dto.EmployeeEntity;
 
+import java.util.UUID;
+
 public class TestHibernate {
 	
 	public static void main(String[] args) {
@@ -12,7 +14,7 @@ public class TestHibernate {
        
 		//Add new Employee object
 		EmployeeEntity emp = new EmployeeEntity();
-		emp.setEmail("demo-user@mail.com");
+		emp.setEmail("demo-user" + UUID.randomUUID().toString() + "@mail.com");
 		emp.setFirstName("demo");
 		emp.setLastName("user");
 		
