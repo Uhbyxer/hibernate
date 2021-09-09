@@ -15,10 +15,9 @@ import javax.persistence.*;
 @NamedQuery(name="Employee.findByFirstName",
 		query = "SELECT e FROM Employee e WHERE e.firstName = :firstName")
 
-public class EmployeeEntity implements Serializable {
+public class EmployeeEntity  {
 	
-	private static final long serialVersionUID = -1798070786993154676L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", unique = true, nullable = false)
