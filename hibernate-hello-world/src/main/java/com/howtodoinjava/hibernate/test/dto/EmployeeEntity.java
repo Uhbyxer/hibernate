@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 
-@Entity
+@Entity(name = "Employee")
 @Table(name = "Employee", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "ID")
 		,
@@ -65,5 +65,15 @@ public class EmployeeEntity implements Serializable {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	@Override
+	public String toString() {
+		return "EmployeeEntity{" +
+				"employeeId=" + employeeId +
+				", email='" + email + '\'' +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				'}';
 	}
 }
