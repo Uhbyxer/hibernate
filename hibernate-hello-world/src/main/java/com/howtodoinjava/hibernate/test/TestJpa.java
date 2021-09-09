@@ -2,10 +2,8 @@ package com.howtodoinjava.hibernate.test;
 
 import com.howtodoinjava.hibernate.test.dto.EmployeeEntity;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 public class TestJpa {
@@ -15,6 +13,9 @@ public class TestJpa {
         EntityManager entityManager = factory.createEntityManager();
 
         String email = insert(entityManager);
+        System.out.println("----------------- by firstName");
+        List<EmployeeEntity> byFirstname = findByFirstname(entityManager, "demo");
+        System.out.println(byFirstname);
 
         EmployeeEntity emp10 = findById(entityManager, 10);
         System.out.println("------------ Emp 10");
@@ -23,6 +24,7 @@ public class TestJpa {
         EmployeeEntity empByEmail = findByEmail(entityManager, "demo-user111@mail.com");
         System.out.println("------------ empByEmail");
         System.out.println(empByEmail);
+
 
 
         entityManager.close();
@@ -50,10 +52,23 @@ public class TestJpa {
     }
 
     private static EmployeeEntity findByEmail(EntityManager entityManager, String email) {
-        String sql = "SELECT e from Employee e where e.email = 'demo-user111@mail.com'";
-        Query query = entityManager.createQuery(sql);
-        EmployeeEntity employeeEntity = (EmployeeEntity) query.getSingleResult();
+        String sql = "SELECT e FROM Employee e WHERE e.email = :email";
+        TypedQuery<EmployeeEntity> query = entityManager.createQuery(sql, EmployeeEntity.class);
+        query.setParameter("email", email);
+
+
+        EmployeeEntity employeeEntity = query.getSingleResult();
 
         return employeeEntity;
+    }
+
+
+    private static List<EmployeeEntity> findByFirstname(EntityManager entityManager, String firstName) {
+        TypedQuery<EmployeeEntity> query = entityManager.createNamedQuery("Employee.findByFirstName", EmployeeEntity.class);
+        query.setParameter("firstName", firstName);
+
+        List<EmployeeEntity> entityList = query.getResultList();
+
+        return entityList;
     }
 }

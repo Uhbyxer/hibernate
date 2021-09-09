@@ -2,13 +2,7 @@ package com.howtodoinjava.hibernate.test.dto;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 
 
 @Entity(name = "Employee")
@@ -17,6 +11,10 @@ import javax.persistence.UniqueConstraint;
 		,
 		@UniqueConstraint(columnNames = "EMAIL")
 })
+
+@NamedQuery(name="Employee.findByFirstName",
+		query = "SELECT e FROM Employee e WHERE e.firstName = :firstName")
+
 public class EmployeeEntity implements Serializable {
 	
 	private static final long serialVersionUID = -1798070786993154676L;
