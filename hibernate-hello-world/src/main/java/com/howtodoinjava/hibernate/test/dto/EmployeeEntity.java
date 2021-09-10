@@ -1,7 +1,5 @@
 package com.howtodoinjava.hibernate.test.dto;
 
-import java.io.Serializable;
-
 import javax.persistence.*;
 
 

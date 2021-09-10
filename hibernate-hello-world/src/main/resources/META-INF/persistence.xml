@@ -5,6 +5,7 @@
              version="2.2">
     <persistence-unit name="JPAUnit" transaction-type="RESOURCE_LOCAL">
         <properties>
+
             <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=COLLAB_TRADING;" />
             <property name="javax.persistence.jdbc.user" value="TRADE_APP" />
             <property name="javax.persistence.jdbc.password" value="S@PasswordMS2019Sql!!ho-ho-ho2" />
@@ -14,6 +15,14 @@
             <property name="hibernate.hbm2ddl.auto" value="validate"/>
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
+
+            <!-- Hikari CP -->
+            <property name="hibernate.connection.provider_class" value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider" />
+            <property name="hibernate.hikari.connectionTimeout" value="20000" />
+            <property name="hibernate.hikari.minimumIdle" value="10" />
+            <property name="hibernate.hikari.maximumPoolSize" value="20" />
+            <property name="hibernate.hikari.idleTimeout" value="300000" />
+
         </properties>
     </persistence-unit>
 
