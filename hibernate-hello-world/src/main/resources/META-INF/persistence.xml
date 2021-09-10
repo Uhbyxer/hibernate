@@ -6,9 +6,9 @@
     <persistence-unit name="JPAUnit" transaction-type="RESOURCE_LOCAL">
         <properties>
 
-            <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=COLLAB_TRADING;" />
-            <property name="javax.persistence.jdbc.user" value="TRADE_APP" />
-            <property name="javax.persistence.jdbc.password" value="S@PasswordMS2019Sql!!ho-ho-ho2" />
+            <property name="javax.persistence.jdbc.url" value="" />
+            <property name="javax.persistence.jdbc.user" value="" />
+            <property name="javax.persistence.jdbc.password" value="" />
             <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
